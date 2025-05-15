@@ -1,0 +1,1760 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/BR.Logic">
+  <CompilationType>CSharp</CompilationType>
+  <Description>Новый скрипт без наполнения.</Description>
+  <Id>ba96e8ed-61d9-41ad-9228-e30e2bd89244</Id>
+  <Logic z:Id="i2" i:type="ExecutedStep">
+    <Childs>
+      <AbstractStep z:Id="i3" i:type="CommentStep">
+        <Childs />
+        <Id>9a64d578-a5a1-4b84-b87d-e5a624334907</Id>
+        <Parent z:Ref="i2" />
+        <PropertyValues />
+        <SelectedOptionId i:nil="true" />
+        <IsCollapsed>false</IsCollapsed>
+        <Text>
+Описание:
+Получить через api информации по каналам:
+
+Имя канала - display_name
+https://mm.1bit.support/api/v4/channels
+
+Ссылка - https://mm.1bit.support/birpa/channels/{name}
+https://mm.1bit.support/api/v4/channels
+
+Назначение канала - purpose
+https://mm.1bit.support/api/v4/channels
+
+Участники - 
+https://mm.1bit.support/api/v4/channels/{str_teamId}/members =&gt; user_id 
+=&gt; https://mm.1bit.support/api/v4/users/{user_id} =&gt; ФИО
+
+[Схема запроса]
+{http://your-mattermost-url.com}/api/v4/{request}
+</Text>
+      </AbstractStep>
+      <AbstractStep z:Id="i4" i:type="ExecutedStep">
+        <Childs />
+        <Id>5c4ae56c-231b-479d-90c5-853b7a293429</Id>
+        <Parent z:Ref="i2" />
+        <PropertyValues>
+          <PropertyValue z:Id="i5">
+            <PropertyName>Value</PropertyName>
+            <_dataType>Expression</_dataType>
+            <_expression>$"{str_mmURL}/api/v4".TrimEnd('/')</_expression>
+            <_screenShotBase64 i:nil="true" />
+            <_value i:nil="true" />
+            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+          </PropertyValue>
+          <PropertyValue z:Id="i6">
+            <PropertyName>To</PropertyName>
+            <_dataType>Expression</_dataType>
+            <_expression>str_baseRequest</_expression>
+            <_screenShotBase64 i:nil="true" />
+            <_value i:nil="true" />
+            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+          </PropertyValue>
+        </PropertyValues>
+        <SelectedOptionId i:nil="true" />
+        <AutoCloseMode>None</AutoCloseMode>
+        <EnableStatus>true</EnableStatus>
+        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+        <RetryCount>-1</RetryCount>
+        <Text>Присвоить значение -  База для запроса 
+[без / в конце]</Text>
+        <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+      </AbstractStep>
+      <AbstractStep z:Id="i7" i:type="ExecutedStep">
+        <Childs>
+          <AbstractStep z:Id="i8" i:type="ExecutedStep">
+            <Childs />
+            <Id>22ab3e97-8225-466e-8842-3c99917a3e24</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues>
+              <PropertyValue z:Id="i9">
+                <PropertyName>Url</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>$"{str_baseRequest}/users/{str_botId}/teams/{str_teamId}/channels"</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i10">
+                <PropertyName>Headers</PropertyName>
+                <_dataType>Value</_dataType>
+                <_expression i:nil="true" />
+                <_screenShotBase64 i:nil="true" />
+                <_value xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.Collections" i:type="d9p1:DictionarySettings">
+                  <d9p1:ArgumentsToCompile xmlns:d10p1="http://schemas.datacontract.org/2004/07/BR.Core">
+                    <d10p1:ArgumentItem z:Id="i11">
+                      <d10p1:ArgumentName>Authorization</d10p1:ArgumentName>
+                      <d10p1:Expression>str_authApi</d10p1:Expression>
+                      <d10p1:Type>System.Object</d10p1:Type>
+                    </d10p1:ArgumentItem>
+                  </d9p1:ArgumentsToCompile>
+                </_value>
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i12">
+                <PropertyName>ContentResult</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_allChannels</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i13">
+                <PropertyName>Status</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>int_status</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId>0</SelectedOptionId>
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Отправить HTTP запрос - Все каналы у бота</Text>
+            <_activityFullName>Activities.HTTP.HTTPResponsesWithFile</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i14" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i15" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i16" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>2db01e72-7358-46f6-a566-859e60eddefd</Id>
+                    <Parent z:Ref="i15" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i17">
+                        <PropertyName>Text</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>"Ошибка при получении информации по каналам"</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId>0</SelectedOptionId>
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Вызвать исключение - Системное</Text>
+                    <_activityFullName>BR.Core.Base.ThrowException</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>2c71471a-5a56-4d34-a6d4-8b783fa66a3b</Id>
+                <Parent z:Ref="i14" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i18" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i19" i:type="CommentStep">
+                    <Childs />
+                    <Id>d266ba68-24bb-4c0f-bba8-722a2effa37d</Id>
+                    <Parent z:Ref="i18" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <IsCollapsed>false</IsCollapsed>
+                    <Text>Каналы получены</Text>
+                  </AbstractStep>
+                </Childs>
+                <Id>b54ba944-94ef-4b6c-a768-16c7c5374f27</Id>
+                <Parent z:Ref="i14" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Ложь - Далее</Text>
+                <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>89ab45a5-6370-4f5b-8941-87d8d6e45ffc</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues>
+              <PropertyValue z:Id="i20">
+                <PropertyName>Condition</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>int_status.Equals(200) == false</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Условный оператор - Если статус НЕ 200</Text>
+            <_activityFullName>BR.Core.Base.If</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i21" i:type="ExecutedStep">
+            <Childs />
+            <Id>7c7c6f86-a856-4d19-b8d8-aca54225f967</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues>
+              <PropertyValue z:Id="i22">
+                <PropertyName>JSONString</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_allChannels</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i23">
+                <PropertyName>Result</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>jsonEl_channels</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>JSON - Каналы</Text>
+            <_activityFullName>Activities.Parsing.JSONParsing</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i24" i:type="ExecutedStep">
+            <Childs />
+            <Id>cd61fb7b-f028-46de-9bf3-ae6635eec65e</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues>
+              <PropertyValue z:Id="i25">
+                <PropertyName>Value</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>jsonEl_channels.EnumerateArray()
+.Where(el =&gt; el.GetProperty("display_name").ToString().Equals("") == false 
+    &amp;&amp; el.GetProperty("display_name").ToString().Equals("Off-Topic") == false
+    &amp;&amp; el.GetProperty("display_name").ToString().Equals("ex Town Square") == false  )
+.Select(el =&gt; el)
+.ToList()</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i26">
+                <PropertyName>To</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>list_jsonChannelsInfo</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Присвоить значение - Отсеить личные чаты ("") и default</Text>
+            <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i27" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i28" i:type="ExecutedStep">
+                <Childs />
+                <Id>b9847067-de3c-4eb3-961e-aa3bf40d027c</Id>
+                <Parent z:Ref="i27" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i29">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>new List&lt;System.Text.Json.JsonElement&gt;()</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i30">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>list_channelsToDelete</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Присвоить значение - Список каналов к удалению
+[default]</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i31" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i32" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>96f07da6-4849-4151-b327-2b441494e8e3</Id>
+                    <Parent z:Ref="i31" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i33">
+                        <PropertyName>Value</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>jsonEl_channel.GetProperty("id")</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i34">
+                        <PropertyName>To</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_chatId</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Id канала</Text>
+                    <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i35" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>6d5de030-0a5b-45ce-97eb-42f4a1e8f901</Id>
+                    <Parent z:Ref="i31" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i36">
+                        <PropertyName>Url</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>$"{str_baseRequest}/channels/{str_chatId}/stats"</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i37">
+                        <PropertyName>Headers</PropertyName>
+                        <_dataType>Value</_dataType>
+                        <_expression i:nil="true" />
+                        <_screenShotBase64 i:nil="true" />
+                        <_value xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.Collections" i:type="d13p1:DictionarySettings">
+                          <d13p1:ArgumentsToCompile xmlns:d14p1="http://schemas.datacontract.org/2004/07/BR.Core">
+                            <d14p1:ArgumentItem z:Id="i38">
+                              <d14p1:ArgumentName>Authorization</d14p1:ArgumentName>
+                              <d14p1:Expression>str_authApi</d14p1:Expression>
+                              <d14p1:Type>System.Object</d14p1:Type>
+                            </d14p1:ArgumentItem>
+                          </d13p1:ArgumentsToCompile>
+                        </_value>
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i39">
+                        <PropertyName>ContentResult</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_channelMembers</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i40">
+                        <PropertyName>Status</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>status</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId>0</SelectedOptionId>
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Отправить HTTP запрос - Количество участников канала</Text>
+                    <_activityFullName>Activities.HTTP.HTTPResponsesWithFile</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i41" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>6bc4a38c-54f1-4bd3-b278-577a43bfaebf</Id>
+                    <Parent z:Ref="i31" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i42">
+                        <PropertyName>JSONString</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_channelMembers</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i43">
+                        <PropertyName>Result</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>jsonEl_channelMembers</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text></Text>
+                    <_activityFullName>Activities.Parsing.JSONParsing</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i44" i:type="ExecutedStep">
+                    <Childs>
+                      <AbstractStep z:Id="i45" i:type="ExecutedStep">
+                        <Childs>
+                          <AbstractStep z:Id="i46" i:type="ExecutedStep">
+                            <Childs />
+                            <Id>6b10fc52-cfdd-4ebc-a686-067c34a4e00d</Id>
+                            <Parent z:Ref="i45" />
+                            <PropertyValues>
+                              <PropertyValue z:Id="i47">
+                                <PropertyName>List</PropertyName>
+                                <_dataType>Expression</_dataType>
+                                <_expression>list_channelsToDelete</_expression>
+                                <_screenShotBase64 i:nil="true" />
+                                <_value i:nil="true" />
+                                <_xpathSettings xmlns:d17p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                              </PropertyValue>
+                              <PropertyValue z:Id="i48">
+                                <PropertyName>Object</PropertyName>
+                                <_dataType>Expression</_dataType>
+                                <_expression>jsonEl_channel</_expression>
+                                <_screenShotBase64 i:nil="true" />
+                                <_value i:nil="true" />
+                                <_xpathSettings xmlns:d17p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                              </PropertyValue>
+                            </PropertyValues>
+                            <SelectedOptionId i:nil="true" />
+                            <AutoCloseMode>None</AutoCloseMode>
+                            <EnableStatus>true</EnableStatus>
+                            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                            <RetryCount>-1</RetryCount>
+                            <Text>Поместить объект в список - К удалению</Text>
+                            <_activityFullName>Activities.BaseCollections.List.Add</_activityFullName>
+                          </AbstractStep>
+                        </Childs>
+                        <Id>05962013-75bb-4eb6-a76b-d6dd95e83b8f</Id>
+                        <Parent z:Ref="i44" />
+                        <PropertyValues />
+                        <SelectedOptionId i:nil="true" />
+                        <AutoCloseMode>None</AutoCloseMode>
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text></Text>
+                        <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+                      </AbstractStep>
+                      <AbstractStep z:Id="i49" i:type="ExecutedStep">
+                        <Childs>
+                          <AbstractStep z:Id="i50" i:type="ExecutedStep">
+                            <Childs />
+                            <Id>7b1d3cb5-39d9-4393-a7cd-19267c9dbf3c</Id>
+                            <Parent z:Ref="i49" />
+                            <PropertyValues>
+                              <PropertyValue z:Id="i51">
+                                <PropertyName>Text</PropertyName>
+                                <_dataType>Expression</_dataType>
+                                <_expression>$"Ошибка при получении информации об участников каналу"</_expression>
+                                <_screenShotBase64 i:nil="true" />
+                                <_value i:nil="true" />
+                                <_xpathSettings xmlns:d17p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                              </PropertyValue>
+                            </PropertyValues>
+                            <SelectedOptionId>0</SelectedOptionId>
+                            <AutoCloseMode>None</AutoCloseMode>
+                            <EnableStatus>true</EnableStatus>
+                            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                            <RetryCount>-1</RetryCount>
+                            <Text>Вызвать исключение - Системное</Text>
+                            <_activityFullName>BR.Core.Base.ThrowException</_activityFullName>
+                          </AbstractStep>
+                        </Childs>
+                        <Id>87c0eb20-67db-4d45-a81d-cca4ac40a0b7</Id>
+                        <Parent z:Ref="i44" />
+                        <PropertyValues>
+                          <PropertyValue z:Id="i52">
+                            <PropertyName>Condition</PropertyName>
+                            <_dataType>Expression</_dataType>
+                            <_expression>int_status.Equals(200) == false</_expression>
+                            <_screenShotBase64 i:nil="true" />
+                            <_value i:nil="true" />
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                        </PropertyValues>
+                        <SelectedOptionId i:nil="true" />
+                        <AutoCloseMode>None</AutoCloseMode>
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text></Text>
+                        <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
+                      </AbstractStep>
+                      <AbstractStep z:Id="i53" i:type="ExecutedStep">
+                        <Childs>
+                          <AbstractStep z:Id="i54" i:type="CommentStep">
+                            <Childs />
+                            <Id>2f9576cb-a943-4624-af79-90312ae59498</Id>
+                            <Parent z:Ref="i53" />
+                            <PropertyValues />
+                            <SelectedOptionId i:nil="true" />
+                            <IsCollapsed>false</IsCollapsed>
+                            <Text>Канал соответствует требованиям</Text>
+                          </AbstractStep>
+                        </Childs>
+                        <Id>4beab740-e3d3-4c2c-a23c-b6a0cb91697f</Id>
+                        <Parent z:Ref="i44" />
+                        <PropertyValues />
+                        <SelectedOptionId i:nil="true" />
+                        <AutoCloseMode>None</AutoCloseMode>
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text>Ложь - Далее</Text>
+                        <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+                      </AbstractStep>
+                    </Childs>
+                    <Id>e287ac5c-7c7a-4f71-9911-97ae29095eab</Id>
+                    <Parent z:Ref="i31" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i55">
+                        <PropertyName>Condition</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>int.Parse(jsonEl_channelMembers.GetProperty("member_count").ToString()) == 1</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Условный оператор - Если количество участников канала == 1</Text>
+                    <_activityFullName>BR.Core.Base.If</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>affb161a-3b42-4006-94e0-d9f7c38092cd</Id>
+                <Parent z:Ref="i27" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i56">
+                    <PropertyName>Collection</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>list_jsonChannelsInfo</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i57">
+                    <PropertyName>Iterator</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>jsonEl_channel</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i58">
+                    <PropertyName>Counter</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression></_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Цикл для каждого канала</Text>
+                <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i59" i:type="ExecutedStep">
+                <Childs />
+                <Id>e719ed17-bca2-49bb-8dfd-60746289b6aa</Id>
+                <Parent z:Ref="i27" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i60">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>list_jsonChannelsInfo.Except(list_channelsToDelete).ToList()</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i61">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>list_jsonChannelsInfo</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Присвоить значение - Убрать каналы на удаление</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>e95cc3bc-2756-4c9d-ae4b-c733fcb947ab</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues />
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Отобрать каналы с количеством участников &gt; 1 </Text>
+            <_activityFullName>BR.Core.Base.Container</_activityFullName>
+          </AbstractStep>
+        </Childs>
+        <Id>f11a6bf5-9fbf-40fe-95e0-3ef7a029d5ca</Id>
+        <Parent z:Ref="i2" />
+        <PropertyValues />
+        <SelectedOptionId i:nil="true" />
+        <AutoCloseMode>None</AutoCloseMode>
+        <EnableStatus>true</EnableStatus>
+        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+        <RetryCount>-1</RetryCount>
+        <Text>Каналы для работы</Text>
+        <_activityFullName>BR.Core.Base.Container</_activityFullName>
+      </AbstractStep>
+      <AbstractStep z:Id="i62" i:type="ExecutedStep">
+        <Childs>
+          <AbstractStep z:Id="i63" i:type="ExecutedStep">
+            <Childs />
+            <Id>c4da3562-a123-4571-8e62-408294edd12d</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i64">
+                <PropertyName>Value</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>new List&lt;Dictionary&lt;string,string&gt;&gt;()</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i65">
+                <PropertyName>To</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>list_channelMembers</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Присвоить значение -  Список всех участники канала
+[default]</Text>
+            <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i66" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i67" i:type="ExecutedStep">
+                <Childs />
+                <Id>d812a3db-885d-4f42-8810-dbac95f6a3fb</Id>
+                <Parent z:Ref="i66" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i68">
+                    <PropertyName>Url</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>$"{str_baseRequest}/channels/{jsonEl_channel.GetProperty("id")}/members?per_page=1000"</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i69">
+                    <PropertyName>Headers</PropertyName>
+                    <_dataType>Value</_dataType>
+                    <_expression i:nil="true" />
+                    <_screenShotBase64 i:nil="true" />
+                    <_value xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.Collections" i:type="d11p1:DictionarySettings">
+                      <d11p1:ArgumentsToCompile xmlns:d12p1="http://schemas.datacontract.org/2004/07/BR.Core">
+                        <d12p1:ArgumentItem z:Id="i70">
+                          <d12p1:ArgumentName>Authorization</d12p1:ArgumentName>
+                          <d12p1:Expression>str_authApi</d12p1:Expression>
+                          <d12p1:Type>System.Object</d12p1:Type>
+                        </d12p1:ArgumentItem>
+                      </d11p1:ArgumentsToCompile>
+                    </_value>
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i71">
+                    <PropertyName>ContentResult</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>str_channelMembers</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i72">
+                    <PropertyName>Status</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>int_status</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId>0</SelectedOptionId>
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Отправить HTTP запрос - Id всех участников канала</Text>
+                <_activityFullName>Activities.HTTP.HTTPResponsesWithFile</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i73" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i74" i:type="ExecutedStep">
+                    <Childs>
+                      <AbstractStep z:Id="i75" i:type="ExecutedStep">
+                        <Childs />
+                        <Id>a60bf78b-4e00-412a-b870-10cac52cd4a4</Id>
+                        <Parent z:Ref="i74" />
+                        <PropertyValues>
+                          <PropertyValue z:Id="i76">
+                            <PropertyName>Text</PropertyName>
+                            <_dataType>Expression</_dataType>
+                            <_expression>"Ошибка при получении участников канала"</_expression>
+                            <_screenShotBase64 i:nil="true" />
+                            <_value i:nil="true" />
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                        </PropertyValues>
+                        <SelectedOptionId>0</SelectedOptionId>
+                        <AutoCloseMode>None</AutoCloseMode>
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text>Вызвать исключение - Системное</Text>
+                        <_activityFullName>BR.Core.Base.ThrowException</_activityFullName>
+                      </AbstractStep>
+                    </Childs>
+                    <Id>692d9603-9951-49bd-b74f-3ca08ce0b604</Id>
+                    <Parent z:Ref="i73" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Истина -</Text>
+                    <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i77" i:type="ExecutedStep">
+                    <Childs>
+                      <AbstractStep z:Id="i78" i:type="CommentStep">
+                        <Childs />
+                        <Id>30fd5d34-ce3d-4c13-a9f8-0bd75690a16d</Id>
+                        <Parent z:Ref="i77" />
+                        <PropertyValues />
+                        <SelectedOptionId i:nil="true" />
+                        <IsCollapsed>false</IsCollapsed>
+                        <Text>Посты канала получены</Text>
+                      </AbstractStep>
+                    </Childs>
+                    <Id>3c2e8943-50c3-4641-a7d2-514d9e50d5d4</Id>
+                    <Parent z:Ref="i73" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Ложь - Далее</Text>
+                    <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>c49e7a11-2f9d-4061-ab5f-01025a3abb35</Id>
+                <Parent z:Ref="i66" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i79">
+                    <PropertyName>Condition</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>int_status.Equals(200) == false</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Условный оператор - Если статус НЕ 200</Text>
+                <_activityFullName>BR.Core.Base.If</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i80" i:type="ExecutedStep">
+                <Childs />
+                <Id>4a73c427-df11-4732-9b97-9b983099464c</Id>
+                <Parent z:Ref="i66" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i81">
+                    <PropertyName>JSONString</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>str_channelMembers</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i82">
+                    <PropertyName>Result</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>jsonEl_members</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>Activities.Parsing.JSONParsing</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i83" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i84" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>22f384cc-4e23-4540-8ffa-ee4877729d27</Id>
+                    <Parent z:Ref="i83" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i85">
+                        <PropertyName>Url</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>$"{str_baseRequest}/users/{jsonEl_member.GetProperty("user_id")}"</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i86">
+                        <PropertyName>Headers</PropertyName>
+                        <_dataType>Value</_dataType>
+                        <_expression i:nil="true" />
+                        <_screenShotBase64 i:nil="true" />
+                        <_value xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.Collections" i:type="d13p1:DictionarySettings">
+                          <d13p1:ArgumentsToCompile xmlns:d14p1="http://schemas.datacontract.org/2004/07/BR.Core">
+                            <d14p1:ArgumentItem z:Id="i87">
+                              <d14p1:ArgumentName>Authorization</d14p1:ArgumentName>
+                              <d14p1:Expression>str_authApi</d14p1:Expression>
+                              <d14p1:Type>System.Object</d14p1:Type>
+                            </d14p1:ArgumentItem>
+                          </d13p1:ArgumentsToCompile>
+                        </_value>
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i88">
+                        <PropertyName>ContentResult</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_member</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i89">
+                        <PropertyName>Status</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>int_status</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId>0</SelectedOptionId>
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Отправить HTTP запрос - ФИО участника</Text>
+                    <_activityFullName>Activities.HTTP.HTTPResponsesWithFile</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i90" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>ad5c7df2-8c50-401f-bf41-9e62d05f1bfd</Id>
+                    <Parent z:Ref="i83" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i91">
+                        <PropertyName>JSONString</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_member</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i92">
+                        <PropertyName>Result</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>jsonEl_member</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text></Text>
+                    <_activityFullName>Activities.Parsing.JSONParsing</_activityFullName>
+                  </AbstractStep>
+                  <AbstractStep z:Id="i93" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>6bd7ea01-ed94-4572-a440-77a203d7a4fa</Id>
+                    <Parent z:Ref="i83" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i94">
+                        <PropertyName>List</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>list_channelMembers</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i95">
+                        <PropertyName>Object</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>new Dictionary&lt;string,string&gt;()
+{   {"UserId", $"{jsonEl_member.GetProperty("id")}"},
+    {"UserName", $"{jsonEl_member.GetProperty("first_name")} {jsonEl_member.GetProperty("last_name")}"},
+    {"UserNickname",  $"{jsonEl_member.GetProperty("username")}"}
+}</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text></Text>
+                    <_activityFullName>Activities.BaseCollections.List.Add</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>52dcb469-4fe1-49d7-ba8b-0c5903ddbecf</Id>
+                <Parent z:Ref="i66" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i96">
+                    <PropertyName>Collection</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>jsonEl_members.EnumerateArray()</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i97">
+                    <PropertyName>Iterator</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>jsonEl_member</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i98">
+                    <PropertyName>Counter</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression></_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Цикл для каждого участника</Text>
+                <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>cdd030e2-9bd9-4c32-aa10-a9c50c3275af</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues />
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Участники канала</Text>
+            <_activityFullName>BR.Core.Base.Container</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i99" i:type="ExecutedStep">
+            <Childs />
+            <Id>1284dab3-bf82-43a8-8b7d-c4a8fe729b6f</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i100">
+                <PropertyName>Value</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>String.Join(", \n", list_channelMembers.AsEnumerable().Select(x =&gt; $"{x["UserName"]}"))</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i101">
+                <PropertyName>To</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_channelMembers</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Присвоить значение - Строка со всеми участниками канала</Text>
+            <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i102" i:type="ExecutedStep">
+            <Childs />
+            <Id>fd7c2311-a06b-4ad9-9817-11c3102894ae</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i103">
+                <PropertyName>Url</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>$"{str_baseRequest}/channels/{jsonEl_channel.GetProperty("id")}/posts?per_page=1000"</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i104">
+                <PropertyName>Headers</PropertyName>
+                <_dataType>Value</_dataType>
+                <_expression i:nil="true" />
+                <_screenShotBase64 i:nil="true" />
+                <_value xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.Collections" i:type="d9p1:DictionarySettings">
+                  <d9p1:ArgumentsToCompile xmlns:d10p1="http://schemas.datacontract.org/2004/07/BR.Core">
+                    <d10p1:ArgumentItem z:Id="i105">
+                      <d10p1:ArgumentName>Authorization</d10p1:ArgumentName>
+                      <d10p1:Expression>str_authApi</d10p1:Expression>
+                      <d10p1:Type>System.Object</d10p1:Type>
+                    </d10p1:ArgumentItem>
+                  </d9p1:ArgumentsToCompile>
+                </_value>
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i106">
+                <PropertyName>ContentResult</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_posts</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i107">
+                <PropertyName>Status</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>int_status</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId>0</SelectedOptionId>
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Отправить HTTP запрос - Все посты канала</Text>
+            <_activityFullName>Activities.HTTP.HTTPResponsesWithFile</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i108" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i109" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i110" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>80033301-42da-4e4e-a2d5-dca90cd010c3</Id>
+                    <Parent z:Ref="i109" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i111">
+                        <PropertyName>Text</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>"Ошибка при получении постов канала"</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId>0</SelectedOptionId>
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Вызвать исключение - Системное</Text>
+                    <_activityFullName>BR.Core.Base.ThrowException</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>3373c959-2876-424b-bc71-815cae60e942</Id>
+                <Parent z:Ref="i108" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i112" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i113" i:type="CommentStep">
+                    <Childs />
+                    <Id>f9b9f021-347d-4b64-98a2-82a29084b28b</Id>
+                    <Parent z:Ref="i112" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <IsCollapsed>false</IsCollapsed>
+                    <Text>Посты канала получены</Text>
+                  </AbstractStep>
+                </Childs>
+                <Id>5d8a8656-6146-4782-99e2-751c81bee61a</Id>
+                <Parent z:Ref="i108" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Ложь - Далее</Text>
+                <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>e9b8e352-35b0-4eea-945d-764cd4ec3a0f</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i114">
+                <PropertyName>Condition</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>int_status.Equals(200) == false</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Условный оператор - Если статус НЕ 200</Text>
+            <_activityFullName>BR.Core.Base.If</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i115" i:type="ExecutedStep">
+            <Childs />
+            <Id>8061d723-707e-4ef5-9434-25be021cc081</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i116">
+                <PropertyName>JSONString</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_posts</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i117">
+                <PropertyName>Result</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>jsonEl_posts</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>JSON - Посты</Text>
+            <_activityFullName>Activities.Parsing.JSONParsing</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i118" i:type="ExecutedStep">
+            <Childs />
+            <Id>16b882d2-af17-43b1-8743-ac36d622a7ea</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i119">
+                <PropertyName>Value</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>""</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i120">
+                <PropertyName>To</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_statusChannels</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Присвоить значение -  Статус канала 
+[default]</Text>
+            <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i121" i:type="ExecutedStep">
+            <Childs />
+            <Id>eec8f3be-f7b2-4414-bda5-f4d9d892104f</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i122">
+                <PropertyName>Value</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>""</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i123">
+                <PropertyName>To</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_channelPosts</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Присвоить значение - Все посты канала
+[default]</Text>
+            <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i124" i:type="ExecutedStep">
+            <Childs />
+            <Id>ae09c5f2-539c-4862-8184-8905766a1c9f</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i125">
+                <PropertyName>FilePath</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>@"SelectPosts.pix"</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i126">
+                <PropertyName>Parameters</PropertyName>
+                <_dataType>Value</_dataType>
+                <_expression i:nil="true" />
+                <_screenShotBase64 i:nil="true" />
+                <_value xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.Core" i:type="d9p1:ArrayOfArgumentItem">
+                  <d9p1:ArgumentItem z:Id="i127">
+                    <d9p1:ArgumentName>in_str_statusChannels</d9p1:ArgumentName>
+                    <d9p1:Expression>str_statusChannels</d9p1:Expression>
+                    <d9p1:Type>System.String</d9p1:Type>
+                  </d9p1:ArgumentItem>
+                  <d9p1:ArgumentItem z:Id="i128">
+                    <d9p1:ArgumentName>in_jsonEl_posts</d9p1:ArgumentName>
+                    <d9p1:Expression>jsonEl_posts</d9p1:Expression>
+                    <d9p1:Type>System.Text.Json.JsonElement</d9p1:Type>
+                  </d9p1:ArgumentItem>
+                  <d9p1:ArgumentItem z:Id="i129">
+                    <d9p1:ArgumentName>out_str_channelPosts</d9p1:ArgumentName>
+                    <d9p1:Expression>str_channelPosts</d9p1:Expression>
+                    <d9p1:Type>System.String</d9p1:Type>
+                  </d9p1:ArgumentItem>
+                  <d9p1:ArgumentItem z:Id="i130">
+                    <d9p1:ArgumentName>in_str_channelName</d9p1:ArgumentName>
+                    <d9p1:Expression>$"{jsonEl_channel.GetProperty("display_name")}"</d9p1:Expression>
+                    <d9p1:Type>System.String</d9p1:Type>
+                  </d9p1:ArgumentItem>
+                </_value>
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Выполнить скрипт - Собрать сообщения</Text>
+            <_activityFullName>BR.Core.Base.ExecuteScript</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i131" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i132" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i133" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>a48660fd-ae93-4260-8846-1b95a03e25de</Id>
+                    <Parent z:Ref="i132" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i134">
+                        <PropertyName>Value</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>@"Переписка не имеет текста"</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i135">
+                        <PropertyName>To</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_channelPosts</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Присвоить значение - Изменить значение</Text>
+                    <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>2e59f009-329c-454b-bf69-f4110c28adc2</Id>
+                <Parent z:Ref="i131" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i136" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i137" i:type="CommentStep">
+                    <Childs />
+                    <Id>8dba625f-e286-4b5f-bfcc-a0f945040275</Id>
+                    <Parent z:Ref="i136" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <IsCollapsed>false</IsCollapsed>
+                    <Text>Есть переписка</Text>
+                  </AbstractStep>
+                </Childs>
+                <Id>49659c2f-4a7e-4b4c-b407-0bd44af77535</Id>
+                <Parent z:Ref="i131" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Ложь - Далее</Text>
+                <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>195da74a-a258-45dd-b009-30a4d25499b1</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i138">
+                <PropertyName>Condition</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>str_channelPosts.Equals("")</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Условный оператор - Если переписка пустая</Text>
+            <_activityFullName>BR.Core.Base.If</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i139" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i140" i:type="ExecutedStep">
+                <Childs />
+                <Id>9577e09b-bebe-4f5d-9f2f-e14f8c3fc253</Id>
+                <Parent z:Ref="i139" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i141">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>System.Text.RegularExpressions.Regex
+    .Replace(str_channelPosts, dict_member["UserId"], dict_member["UserName"])</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i142">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>str_channelPosts</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Присвоить значение - Заменить в посте UserId на UserName</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i143" i:type="ExecutedStep">
+                <Childs />
+                <Id>6282bdc8-31bc-4a8e-a95d-e1218dd8bf65</Id>
+                <Parent z:Ref="i139" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i144">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>System.Text.RegularExpressions.Regex
+    .Replace(str_channelPosts, dict_member["UserNickname"], dict_member["UserName"])
+</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i145">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>str_channelPosts</_expression>
+                    <_screenShotBase64 i:nil="true" />
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Присвоить значение - Заменить в посте UserNickname на UserName</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>d2992524-2c96-41bb-a6e8-49fb6661b098</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i146">
+                <PropertyName>Collection</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>list_channelMembers</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i147">
+                <PropertyName>Iterator</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>dict_member</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+              <PropertyValue z:Id="i148">
+                <PropertyName>Counter</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression></_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text></Text>
+            <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i149" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i150" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i151" i:type="ExecutedStep">
+                    <Childs />
+                    <Id>f518744a-84da-4282-b876-3475d38b18db</Id>
+                    <Parent z:Ref="i150" />
+                    <PropertyValues>
+                      <PropertyValue z:Id="i152">
+                        <PropertyName>Value</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>String.Join(", ", System.Text.RegularExpressions.Regex
+    .Matches(str_channelPosts, @"@*([А-Яа-я]+\W[А-Яа-я]+)\n\d")
+    .Select(x =&gt; x.Groups[1].ToString())
+    .ToList()   )</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                      <PropertyValue z:Id="i153">
+                        <PropertyName>To</PropertyName>
+                        <_dataType>Expression</_dataType>
+                        <_expression>str_channelPosts</_expression>
+                        <_screenShotBase64 i:nil="true" />
+                        <_value i:nil="true" />
+                        <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                      </PropertyValue>
+                    </PropertyValues>
+                    <SelectedOptionId i:nil="true" />
+                    <AutoCloseMode>None</AutoCloseMode>
+                    <EnableStatus>true</EnableStatus>
+                    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                    <RetryCount>-1</RetryCount>
+                    <Text>Присвоить значение - Выделить фамилии сотрудников и записать строкой</Text>
+                    <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+                  </AbstractStep>
+                </Childs>
+                <Id>ad29f447-3c22-4429-a1a7-0584abe82d8e</Id>
+                <Parent z:Ref="i149" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i154" i:type="ExecutedStep">
+                <Childs>
+                  <AbstractStep z:Id="i155" i:type="CommentStep">
+                    <Childs />
+                    <Id>230dbb47-daa0-428c-8cd8-1cab0a228c86</Id>
+                    <Parent z:Ref="i154" />
+                    <PropertyValues />
+                    <SelectedOptionId i:nil="true" />
+                    <IsCollapsed>false</IsCollapsed>
+                    <Text>Да не нужно тебе это</Text>
+                  </AbstractStep>
+                </Childs>
+                <Id>b3e1eec2-126c-45a5-8874-4c058200bf24</Id>
+                <Parent z:Ref="i149" />
+                <PropertyValues />
+                <SelectedOptionId i:nil="true" />
+                <AutoCloseMode>None</AutoCloseMode>
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Ложь - Далее</Text>
+                <_activityFullName>BR.Core.Base.IfFalse</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>921b8eda-7936-4cfe-9372-a840e8367523</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i156">
+                <PropertyName>Condition</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>$"{jsonEl_channel.GetProperty("display_name")}".Equals("долги КСУП") == true</_expression>
+                <_screenShotBase64 i:nil="true" />
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Условный оператор - Если канал долги КСУП</Text>
+            <_activityFullName>BR.Core.Base.If</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i157" i:type="ExecutedStep">
+            <Childs />
+            <Id>66abc255-ac98-4c02-8bff-fa4c6c64d863</Id>
+            <Parent z:Ref="i62" />
+            <PropertyValues>
+              <PropertyValue z:Id="i158">
+                <PropertyName>CSCode</PropertyName>
+                <_dataType>Value</_dataType>
+                <_expression i:nil="true" />
+                <_screenShotBase64 i:nil="true" />
+                <_value xmlns:d9p1="http://www.w3.org/2001/XMLSchema" i:type="d9p1:string">// Собрать данные о канале
+var infoChannel = new Dictionary&lt;string,string&gt;() {
+    { "ChannelName", $"{jsonEl_channel.GetProperty("display_name")}"},
+    { "URL", $"https://mm.1bit.support/birpa/channels/{jsonEl_channel.GetProperty("name")}"},
+    { "Purpose", $"{jsonEl_channel.GetProperty("purpose")}"},
+    { "Members", str_channelMembers},
+    { "Status", str_statusChannels},
+    { "Messages",str_channelPosts}  };
+
+// Добавить информацию о канале в общий список
+io_list_sortedChannelsInfo.Add(infoChannel);</_value>
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <AutoCloseMode>None</AutoCloseMode>
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text>Получение данных о канале</Text>
+            <_activityFullName>BR.Core.Base.ExecuteCSCode</_activityFullName>
+          </AbstractStep>
+        </Childs>
+        <Id>f25c353d-9f38-4a58-9637-033aca35ac6c</Id>
+        <Parent z:Ref="i2" />
+        <PropertyValues>
+          <PropertyValue z:Id="i159">
+            <PropertyName>Collection</PropertyName>
+            <_dataType>Expression</_dataType>
+            <_expression>list_jsonChannelsInfo</_expression>
+            <_screenShotBase64 i:nil="true" />
+            <_value i:nil="true" />
+            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+          </PropertyValue>
+          <PropertyValue z:Id="i160">
+            <PropertyName>Iterator</PropertyName>
+            <_dataType>Expression</_dataType>
+            <_expression>jsonEl_channel</_expression>
+            <_screenShotBase64 i:nil="true" />
+            <_value i:nil="true" />
+            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+          </PropertyValue>
+          <PropertyValue z:Id="i161">
+            <PropertyName>Counter</PropertyName>
+            <_dataType>Expression</_dataType>
+            <_expression></_expression>
+            <_screenShotBase64 i:nil="true" />
+            <_value i:nil="true" />
+            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+          </PropertyValue>
+        </PropertyValues>
+        <SelectedOptionId i:nil="true" />
+        <AutoCloseMode>None</AutoCloseMode>
+        <EnableStatus>true</EnableStatus>
+        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+        <RetryCount>-1</RetryCount>
+        <Text>Цикл для каждого канала</Text>
+        <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
+      </AbstractStep>
+    </Childs>
+    <Id>d41b00fa-82ac-43ef-8a51-5461c6be908c</Id>
+    <Parent i:nil="true" />
+    <PropertyValues />
+    <SelectedOptionId i:nil="true" />
+    <AutoCloseMode>None</AutoCloseMode>
+    <EnableStatus>true</EnableStatus>
+    <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+    <RetryCount>-1</RetryCount>
+    <Text></Text>
+    <_activityFullName>BR.Core.Base.Container</_activityFullName>
+  </Logic>
+  <Name>MM_Api.pix</Name>
+  <Namespaces xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <Params>
+    <Parameter z:Id="i162">
+      <DefaultValueExpression></DefaultValueExpression>
+      <Description>Отсортированная информация о каналах</Description>
+      <Name>io_list_sortedChannelsInfo</Name>
+      <RunnerType>None</RunnerType>
+      <TypeString>System.Collections.Generic.List`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
+    </Parameter>
+    <Parameter z:Id="i163">
+      <DefaultValueExpression></DefaultValueExpression>
+      <Description></Description>
+      <Name>bool_Prod</Name>
+      <RunnerType>None</RunnerType>
+      <TypeString>System.Boolean</TypeString>
+    </Parameter>
+  </Params>
+  <PlatformVersion xmlns:d2p1="http://schemas.datacontract.org/2004/07/System">
+    <d2p1:_Build>2</d2p1:_Build>
+    <d2p1:_Major>2</d2p1:_Major>
+    <d2p1:_Minor>27</d2p1:_Minor>
+    <d2p1:_Revision>0</d2p1:_Revision>
+  </PlatformVersion>
+  <TemplateVersion xmlns:d2p1="http://schemas.datacontract.org/2004/07/System" i:nil="true" />
+  <Variables xmlns:d2p1="http://schemas.datacontract.org/2004/07/BR.Logic.Params">
+    <d2p1:Variable z:Id="i164">
+      <d2p1:DefaultValueExpression>new List&lt;System.Text.Json.JsonElement&gt;()</d2p1:DefaultValueExpression>
+      <d2p1:Description>Каналы</d2p1:Description>
+      <d2p1:Name>list_jsonChannelsInfo</d2p1:Name>
+      <d2p1:TypeString>System.Collections.Generic.List`1[[System.Text.Json.JsonElement, System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51]]</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i165">
+      <d2p1:DefaultValueExpression>new List&lt;Dictionary&lt;string, string&gt;&gt;()</d2p1:DefaultValueExpression>
+      <d2p1:Description>Отсортированная информация о постах </d2p1:Description>
+      <d2p1:Name>list_sortedPostsInfo</d2p1:Name>
+      <d2p1:TypeString>System.Collections.Generic.List`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i166">
+      <d2p1:DefaultValueExpression>new List&lt;string&gt;()</d2p1:DefaultValueExpression>
+      <d2p1:Description>Все посты канала</d2p1:Description>
+      <d2p1:Name>list_channelPosts</d2p1:Name>
+      <d2p1:TypeString>System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i167">
+      <d2p1:DefaultValueExpression>@"https://mm.1bit.support".TrimEnd('/')</d2p1:DefaultValueExpression>
+      <d2p1:Description>Ссылка на сервер [без / в конце]</d2p1:Description>
+      <d2p1:Name>str_mmURL</d2p1:Name>
+      <d2p1:TypeString>System.String</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i168">
+      <d2p1:DefaultValueExpression>@"j5xmb3iie3n6txowdfu8adn3ma"</d2p1:DefaultValueExpression>
+      <d2p1:Description>Id команды BI&amp;RPA</d2p1:Description>
+      <d2p1:Name>str_teamId</d2p1:Name>
+      <d2p1:TypeString>System.String</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i169">
+      <d2p1:DefaultValueExpression>@"jh1u4pu3u3ffmg9bsr6r7bfsqc"</d2p1:DefaultValueExpression>
+      <d2p1:Description>Id Бота</d2p1:Description>
+      <d2p1:Name>str_botId</d2p1:Name>
+      <d2p1:TypeString>System.String</d2p1:TypeString>
+    </d2p1:Variable>
+    <d2p1:Variable z:Id="i170">
+      <d2p1:DefaultValueExpression>@"Bearer w47rsnizppdxu8a7wexx5hc45a"</d2p1:DefaultValueExpression>
+      <d2p1:Description>Строка авторизации для запросов </d2p1:Description>
+      <d2p1:Name>str_authApi</d2p1:Name>
+      <d2p1:TypeString>System.String</d2p1:TypeString>
+    </d2p1:Variable>
+  </Variables>
+  <Version i:nil="true" />
+</Script>
