@@ -1,0 +1,18 @@
+{'id': 's31h8o3g4fyb3xe9tdewckhxhh', 'create_at': 1743677501186, 'update_at': 1743677501186, 'delete_at': 0, 
+'team_id': 'j5xmb3iie3n6txowdfu8adn3ma', 'type': 'O', 'display_name': 'маленький канал', 
+'name': 'fac68bdacdd818fc3ca58168b089049c', 'header': '', 
+'purpose': 'проверка бота, в случае пустого чата', 'last_post_at': 1743677517685, 
+'total_msg_count': 0, 'extra_update_at': 0, 'creator_id': 'jh1u4pu3u3ffmg9bsr6r7bfsqc', 'scheme_id': '', 'props': None, 
+'group_constrained': False, 'shared': None, 'total_msg_count_root': 0, 'policy_id': None, 'last_root_post_at': 1743677517685}
+
+{'id': 'nys3yprirtfcuchue5tsrtynjo', 'create_at': 1729622904800, 'update_at': 1739352209377, 'delete_at': 0, 
+'team_id': 'j5xmb3iie3n6txowdfu8adn3ma', 'type': 'O', 'display_name': 'системный', 
+'name': 'town-square', 'header': '', 'purpose': '', 'last_post_at': 1743492941165, 'total_msg_count': 276, 'extra_update_at': 0, 'creator_id': '', 
+'scheme_id': None, 'props': None, 'group_constrained': False, 'shared': None, 'total_msg_count_root': 95, 'policy_id': None, 
+'last_root_post_at': 1743492941165}
+
+{'id': 'ejm6yc6ustbgib671s6trdiqnw', 'create_at': 1732106064513, 'update_at': 1732627897519, 'delete_at': 0, 
+'team_id': 'j5xmb3iie3n6txowdfu8adn3ma', 'type': 'O', 'display_name': 'тест отправки',
+ 'name': 'bc5163b0aeb81c8fdf943802b3b641b5', 'header': '', 'purpose': '', 'last_post_at': 1744113441052, 'total_msg_count': 551, 
+'extra_update_at': 0, 'creator_id': 'c8rjs9dwrjyg5q8g1smscaou1e', 'scheme_id': '', 'props': None, 'group_constrained': False,
+ 'shared': None, 'total_msg_count_root': 523, 'policy_id': None, 'last_root_post_at': 1744113441052}
